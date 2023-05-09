@@ -59,15 +59,20 @@ useEffect(() => {
             <Route
                 path="/myroutines"
                 element= {
-                    <UserRoutines />
+                    <UserRoutines 
+                    user={user}
+                    myRoutines={myRoutines}
+                    setMyRoutines={setMyRoutines}
+                    allRoutines={allRoutines}
+                    />
                 }
             />
-            <Route
+            {/* <Route
                 path="/activities"
                 element= {
                     <AllActivities />
-                }
-            />
+                } */}
+            {/* /> */}
             <Route
                 path="/login"
                 element= {
@@ -75,6 +80,7 @@ useEffect(() => {
                         setToken={setToken}
                         setUser={setUser}
                         setIsLoggedIn={setIsLoggedIn}
+                        token={token}
                     />
                 }
             />
@@ -85,6 +91,7 @@ useEffect(() => {
                         setIsLoggedIn ={setIsLoggedIn}
                         setToken ={setToken}
                         setUser ={setUser}
+                        token ={token} 
                     />
                 }
             />
@@ -96,6 +103,7 @@ useEffect(() => {
                     />
                 }
             />
+    
         </Routes>
     </>
  )

@@ -1,4 +1,4 @@
-const BASE_URL = `https://fitnesstrac-kr.herokuapp.com/api/`
+const BASE_URL = `https://fitnesstrac-kr.herokuapp.com/api`
 
 export const loginUser = async (username, password) => {
     try {
@@ -25,7 +25,7 @@ export const getUser = async (token) => {
         const response = await fetch(`${BASE_URL}/users/me`, {
             headers: {
                 "Content-Type": "application/json",
-                Authorization: `Bearer ${token}`,
+                "Authorization": `Bearer ${token}`,
             }
         });
         const result = await response.json();
@@ -37,7 +37,7 @@ export const getUser = async (token) => {
 
 export const registerUser = async (username, password) => {
     try {
-        const response = await fetch(`${BASE_URL}/users/login`, {
+        const response = await fetch(`${BASE_URL}/users/register`, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -63,9 +63,26 @@ export const getAllRoutines = async () => {
           },
         });
         const result = await response.json();
-        console.log(result);
+        // console.log(result);
         return result;
     } catch (err) {
         console.error(err);
+    }
+}
+
+export const getUserRoutines = async (user) => {
+    try {
+    const token = localStorage.getItem("token")
+    const response = await fetch(`${BASE_URL}/users/${username}/routines`, {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+    });
+    const result = await response.json();
+    console.log(result);
+    return result;
+    } catch (err){
+    console.error(err);
     }
 }
