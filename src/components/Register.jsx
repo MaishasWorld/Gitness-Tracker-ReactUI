@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { registerUser, getUser } from "../api/indexAPI";
 
-const Register = ({setIsLoggedIn, setToken, setUser}) => {
+const Register = ({setIsLoggedIn, setToken, setUser, token}) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
@@ -10,18 +10,17 @@ const Register = ({setIsLoggedIn, setToken, setUser}) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const { data } = await registerUser(username, password);
+        const  data  = await registerUser(username, password);
         const currentUser = await getUser(data.token);
-        
         if(data.token) {
             setToken(data.token);
             setUser(currentUser);
             setIsLoggedIn(true);
-            localStorage.setItem('token', data.token);
+            localStorage.setItem('token', token);
         }
         setUsername('');
         setPassword('');
-        navigate('/myroutines');
+        // navigate('/myroutines');
     }
     return (
         <>
