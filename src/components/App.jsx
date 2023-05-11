@@ -13,7 +13,7 @@ import {
     UserRoutine
 } from ".";
 import { Routes, Route } from "react-router-dom";
-import { getAllRoutines } from "../api/indexAPI";
+//import { getAllRoutines } from "../api/indexAPI";
 
 const App = () => {
 const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -21,17 +21,17 @@ const [user, setUser] = useState({});
 const [token, setToken] = useState(localStorage.token);
 const [allRoutines, setAllRoutines] = useState([]);
 const [myRoutines, setMyRoutines] = useState([]);
-const [activities, setActivities] = useState([]);
+const [allActivities, setAllActivities] = useState([]);
 
 
 //What is this called?
-useEffect(() => {
-    const getAllPublicRoutines = async () => {
-      const routines = await getAllRoutines();
-      setAllRoutines(routines);
-    };
-    getAllPublicRoutines();
-}, []);
+// useEffect(() => {
+//     const getAllPublicRoutines = async () => {
+//       const routines = await getAllRoutines();
+//       setAllRoutines(routines);
+//     };
+//     getAllPublicRoutines();
+// }, []);
 
  return (
     <>
@@ -71,12 +71,17 @@ useEffect(() => {
                     />
                 }
             />
-            {/* <Route
+            <Route
                 path="/activities"
                 element= {
-                    <AllActivities />
-                } */}
-            {/* /> */}
+                    <AllActivities 
+                        allActivities={allActivities}
+                        setAllActivities={setAllActivities}
+                        isLoggedIn={isLoggedIn}
+                        token={token}
+                    />
+                }
+            />
             <Route
                 path="/login"
                 element= {

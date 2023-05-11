@@ -1,14 +1,15 @@
 import React from "react";
 import { NavLink, useNavigate} from "react-router-dom";
 
-const Navbar = ({isLoggedIn, setIsLoggedIn, setUser, setToken, token}) => {
+const Navbar = ({isLoggedIn, setIsLoggedIn, setUser, setToken,}) => {
     const navigate = useNavigate();
     return (
         <>
             <nav>
                 <h1>Fitness Tracker</h1>
-                {isLoggedIn || token ? (
+                {isLoggedIn || localStorage.token ? (
                     <>
+                        <NavLink to="/">Home</NavLink>
                         <NavLink to="/routines">All Routines</NavLink>
                         <NavLink to="/myroutines">My Routines</NavLink>
                         <NavLink to="/activities">Activities</NavLink>

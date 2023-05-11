@@ -3,7 +3,7 @@ import React from "react";
 const Home = ({isLoggedIn, user}) => {
     return(
         <>
-        {isLoggedIn ? 
+        {isLoggedIn || localStorage.token ? 
             (<>
             <h1>Hello, {user.username}!</h1>
 

@@ -9,18 +9,17 @@ const navigate = useNavigate();
 useEffect(() => {
     const getAllUserRoutines = async () => {
     const userRoutines = await getUserRoutines(user);
-    console.log(userRoutines);
-    console.log(user);
+    // console.log(userRoutines);
+    // console.log(user);
     setMyRoutines(userRoutines)
     };
     getAllUserRoutines();
 },[])
 
-console.log(myRoutines)
 return (
     <>
     <CreateRoutine />
-    {user.username && myRoutines.length > 0 ?
+    {localStorage.token ?
       <>
         {myRoutines.map((routine) => {
             return(

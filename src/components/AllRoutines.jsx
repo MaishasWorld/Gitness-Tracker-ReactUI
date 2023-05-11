@@ -6,7 +6,7 @@ const AllRoutines = ({allRoutines, setAllRoutines}) => {
     useEffect(() => {
         const getAllPublicRoutines = async () => {
         const allRoutines = await getAllRoutines();
-        console.log(allRoutines);
+        // console.log(allRoutines);
         setAllRoutines(allRoutines)
         };
         getAllPublicRoutines();
