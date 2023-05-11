@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { loginUser, getUser } from "../api/indexAPI";
+import './Login.css';
 
 const Login = ({setIsLoggedIn, setToken, setUser, token }) => {
     const [username, setUsername] = useState('');

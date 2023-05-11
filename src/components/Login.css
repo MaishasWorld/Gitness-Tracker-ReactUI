@@ -1,0 +1,33 @@
+#login-container {
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 7px black solid; 
+    height: 250 px;
+    margin-left: 50px;
+    margin-right: 50px;
+    border-radius: 2%;
+    background-color: lavender;
+
+    box-shadow: 3px 3px 10px black;
+}
+
+label {
+    text-align: center;
+}
+
+button{
+    height: 40px;
+    width: 120px;
+    background-color: black; 
+    color: white;
+    font-size: 30px;
+    margin: 7px; 
+}
+
+button:hover {
+    cursor: pointer;
+    font-weight: 500;
+
+}

@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams, NavLink } from 'react-router-dom';
+import { removeRoutineActivity } from '../api/indexAPI';
 
 const UserRoutine = ({ myRoutines}) => {
     const id = Number(useParams().id);
     const routine = myRoutines.find(routine => routine.id === id);
+    const [userRoutine, setUserRoutine] = useState({});
+      
     if(routine) {
     return (
         <>
@@ -20,10 +23,22 @@ const UserRoutine = ({ myRoutines}) => {
                             <li>Reps: {activity.count}</li>
                         </ul>
                         <button>Edit Activity</button>
-                        <button>Delete Activity</button>
+                        <button onClick={ async () => {
+                            const routineActivityToRemove = await removeRoutineActivity(activity);
+                            // if(!routineActivityToRemove.error) 
+                                                       
+                            // {
+                            //     const newRoutineActivities = await getRoutineActivities(user)
+                            //     setMyRoutines(newUserRoutines);
+                            // }
+                            navigate(`/myroutines/:id`);
+                            }}
+                        
+                        >Delete Activity</button>
                     </div>
                 )
             })}
+            <>Form</>
             <button>Add Activity</button>
         </>
     )};

@@ -11,9 +11,9 @@ const CreateRoutine = ({token, setMyRoutines, myRoutines, setAllRoutines, allRou
     const handleSubmit = async (event) => {
         event.preventDefault();
         const newRoutine = await createRoutine(name, goal, isPublic);
-            console.log(newRoutine)
+            console.log(newRoutine, "HI453453453453")
             if(!newRoutine.error && newRoutine !== undefined) {
-            //setMyRoutines([newRoutine, ...myRoutines]);
+            setMyRoutines([newRoutine, ...myRoutines]);
             setAllRoutines([newRoutine, ...allRoutines]);
         }
         setName('');

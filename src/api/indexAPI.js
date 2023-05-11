@@ -151,6 +151,7 @@ export const getAllActivities = async () => {
       const response = await fetch(`${BASE_URL}/activities`, {
         headers: {
           'Content-Type': 'application/json',
+          
         },
       });
   
@@ -162,3 +163,44 @@ export const getAllActivities = async () => {
     }
   }
        
+  export const createActivity = async (name, description) => {
+    try {
+      const token = localStorage.getItem("token")
+      const response = await fetch(`${BASE_URL}/activities`, {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          name: name,
+          description: description
+        }) 
+      });
+  
+      const result = await response.json();
+  
+      console.log(result);
+      return result
+    } catch (err) {
+      console.error(err);
+    }
+  }
+  
+  export const removeRoutineActivity = async (activity) => {
+    try {
+      const token = localStorage.getItem("token")
+      const response = await fetch(`${BASE_URL}/routine_activities/${activity.id}`, {
+        headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+        },
+      });
+      const result = await response.json();
+      console.log(result);
+      return result
+    } catch (err) {
+      console.error(err);
+    }
+  }
+        
