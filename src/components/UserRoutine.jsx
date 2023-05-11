@@ -19,9 +19,12 @@ const UserRoutine = ({ myRoutines}) => {
                             <li>Time: {activity.duration}</li>
                             <li>Reps: {activity.count}</li>
                         </ul>
+                        <button>Edit Activity</button>
+                        <button>Delete Activity</button>
                     </div>
                 )
             })}
+            <button>Add Activity</button>
         </>
     )};
 };

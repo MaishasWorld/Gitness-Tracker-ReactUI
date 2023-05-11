@@ -13,7 +13,7 @@ const CreateRoutine = ({token, setMyRoutines, myRoutines, setAllRoutines, allRou
         const newRoutine = await createRoutine(name, goal, isPublic);
             console.log(newRoutine)
             if(!newRoutine.error && newRoutine !== undefined) {
-            setMyRoutines([newRoutine, ...myRoutines]);
+            //setMyRoutines([newRoutine, ...myRoutines]);
             setAllRoutines([newRoutine, ...allRoutines]);
         }
         setName('');
@@ -23,7 +23,7 @@ const CreateRoutine = ({token, setMyRoutines, myRoutines, setAllRoutines, allRou
 
     return (
         <form onSubmit={handleSubmit}>
-            <h4></h4>
+            <h4>Make a New Routine</h4>
                 <input required type='text' 
                   placeholder='Routine Name' value={name} 
                   onChange={(event) => setName(event.target.value)}>
@@ -35,11 +35,12 @@ const CreateRoutine = ({token, setMyRoutines, myRoutines, setAllRoutines, allRou
                 </input>
 
                 <input type="checkbox"
-            onChange={(event) => {
-                if(event.target.checked) {
+                onChange={(event) => {
+                  if(event.target.checked) {
                     setIsPublic(true)
-                } else {
-                setIsPublic(false)}}}/> 
+                  } else {
+                    setIsPublic(false)}}}/> 
+
                 <button type='submit'>Create Routine</button>
         </form>
     );
