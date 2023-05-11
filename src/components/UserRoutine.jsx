@@ -1,11 +1,9 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, NavLink } from 'react-router-dom';
 
-const Routine = ({allRoutines, myRoutines}) => {
+const UserRoutine = ({ myRoutines}) => {
     const id = Number(useParams().id);
-    const routine = allRoutines.find(routine => routine.id === id);
-    console.log(routine)
-    // const userRoutine = myRoutines.find(routine => routine.id === id);
+    const routine = myRoutines.find(routine => routine.id === id);
     if(routine) {
     return (
         <>
@@ -28,4 +26,4 @@ const Routine = ({allRoutines, myRoutines}) => {
     )};
 };
 
-export default Routine;
+export default UserRoutine;

@@ -10,17 +10,16 @@ const Register = ({setIsLoggedIn, setToken, setUser, token}) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const  data  = await registerUser(username, password);
-        const currentUser = await getUser(data.token);
+        const data = await registerUser(username, password);
         if(data.token) {
             setToken(data.token);
-            setUser(currentUser);
+            setUser(data.user);
             setIsLoggedIn(true);
             localStorage.setItem('token', token);
         }
         setUsername('');
         setPassword('');
-        // navigate('/myroutines');
+        navigate('/myroutines');
     }
     return (
         <>

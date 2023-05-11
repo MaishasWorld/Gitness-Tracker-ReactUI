@@ -73,7 +73,7 @@ export const getAllRoutines = async () => {
 export const getUserRoutines = async (user) => {
     try {
     const token = localStorage.getItem("token")
-    const response = await fetch(`${BASE_URL}/users/${username}/routines`, {
+    const response = await fetch(`${BASE_URL}/users/${user.username}/routines`, {
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
@@ -86,3 +86,65 @@ export const getUserRoutines = async (user) => {
     console.error(err);
     }
 }
+
+export const createRoutine = async (name, goal, isPublic) => {
+    try {
+      const token = localStorage.getItem("token")
+      const response = await fetch(`${BASE_URL}/routines`, {
+        method: "POST",
+        headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          name: name,
+          goal: goal,
+          isPublic: isPublic
+        })
+      });
+      const result = await response.json();
+      console.log(result);
+      return result
+    } catch (err) {
+      console.error(err);
+    }
+}
+
+export const editRoutine = async (id, fields) => {
+    try {
+      const token = localStorage.getItem("token")
+      const response = await fetch(`${BASE_URL}/routines/${id}`, {
+        method: "PATCH",
+        headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(fields)
+      });
+      const result = await response.json();
+      console.log(result);
+      return result
+    } catch (err) {
+      console.error(err);
+    }
+}
+
+export const removeRoutine = async (routine) => {
+    try {
+      const token = localStorage.getItem("token")
+      const response = await fetch(`${BASE_URL}/routines/${routine.id}`, {
+        method: "DELETE",
+        headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+        },
+      });
+      const result = await response.json();
+      console.log(result);
+      return result
+    } catch (err) {
+      console.error(err);
+    }
+}
+
+

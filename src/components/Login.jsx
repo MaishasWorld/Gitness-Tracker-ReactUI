@@ -12,25 +12,25 @@ const Login = ({setIsLoggedIn, setToken, setUser, token }) => {
 
         const data = await loginUser(username, password);
         console.log(data);
-        const currentUser = await getUser(data.token);
-        console.log(currentUser);
-;        if(data.token) {
+        const token = data.token;
+        if(data.token) {
             setToken(data.token);
             //currentUser.data?
-            setUser(currentUser);
+            setUser(data.user);
             setIsLoggedIn(true);
             localStorage.setItem('token', token);
+            localStorage.setItem('user', data.user.username)
         }
         setUsername('');
         setPassword('');
-        // navigate('/myroutines');
+        navigate('/myroutines');
     }
     return (
         <>
         <form onSubmit={handleSubmit}>
             <h2>Login</h2>
-                <input required type='text' placeholder='username' value={username} autocomplete='on' onChange={(event) => setUsername(event.target.value)}></input>
-                <input required type='text' placeholder='password' value={password} autocomplete='on' onChange={(event) => setPassword(event.target.value)}></input>
+                <input required type='text' placeholder='username' value={username} autoComplete='on' onChange={(event) => setUsername(event.target.value)}></input>
+                <input required type='text' placeholder='password' value={password} autoComplete='on' onChange={(event) => setPassword(event.target.value)}></input>
                 <button type='submit'>Login</button>
                 <p>Don't have an Account? <NavLink to="/register">Register Here</NavLink></p>
         </form>
