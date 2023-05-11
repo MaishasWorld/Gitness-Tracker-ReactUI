@@ -1,7 +1,17 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { NavLink } from 'react-router-dom';
+import {getAllRoutines } from '../api/indexAPI';
+const AllRoutines = ({allRoutines, setAllRoutines}) => {
 
-const AllRoutines = ({allRoutines}) => {
+    useEffect(() => {
+        const getAllPublicRoutines = async () => {
+        const allRoutines = await getAllRoutines();
+        console.log(allRoutines);
+        setAllRoutines(allRoutines)
+        };
+        getAllPublicRoutines();
+    },[])
+
     return (
         <>
             <h2>All Routines</h2>
@@ -9,8 +19,8 @@ const AllRoutines = ({allRoutines}) => {
                 return (
                    <div key={routine.id}>
                    <NavLink to={`/routines/${routine.id}`}><h4>{routine.name}</h4></NavLink>
-                   <p>{routine.creatorName}</p>
-                   <p>{routine.goal}</p>
+                   <p>By: {routine.creatorName}</p>
+                   <p>Goal: {routine.goal}</p>
                    </div> 
                 )
             })};

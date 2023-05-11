@@ -7,7 +7,10 @@ import {
     UserRoutines,
     AllActivities,
     Login,
-    Register
+    Register,
+    CreateRoutine,
+    EditRoutine,
+    UserRoutine
 } from ".";
 import { Routes, Route } from "react-router-dom";
 import { getAllRoutines } from "../api/indexAPI";
@@ -53,6 +56,7 @@ useEffect(() => {
                 element= {
                     <AllRoutines 
                     allRoutines = {allRoutines}
+                    setAllRoutines = {setAllRoutines}
                     />
                 }
             />
@@ -103,7 +107,41 @@ useEffect(() => {
                     />
                 }
             />
-    
+            <Route
+                path="/myroutines/:id"
+                element={
+                    <UserRoutine
+                        myRoutines={myRoutines}
+                    />
+                }
+            />
+            <Route
+                path="/myroutines"
+                element={
+                    <CreateRoutine 
+                        token={token}
+                        myRoutines={myRoutines}
+                        setMyRoutines={setMyRoutines}
+                        allRoutines={allRoutines}
+                        setAllRoutines={setAllRoutines}
+                        user={user}
+                    />
+                }
+            />
+            <Route
+                path="/routines/:id/edit"
+                element= {
+                    <EditRoutine 
+                    token={token}
+                    myRoutines={myRoutines}
+                    setMyRoutines={setMyRoutines}
+                    allRoutines={allRoutines}
+                    setAllRoutines={setAllRoutines}
+                    user={user}
+                    />
+
+                }
+            />
         </Routes>
     </>
  )
