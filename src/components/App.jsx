@@ -10,7 +10,8 @@ import {
     Register,
     CreateRoutine,
     EditRoutine,
-    UserRoutine
+    UserRoutine,
+    CreateActivity
 } from ".";
 import { Routes, Route } from "react-router-dom";
 //import { getAllRoutines } from "../api/indexAPI";
@@ -68,6 +69,7 @@ const [allActivities, setAllActivities] = useState([]);
                     myRoutines={myRoutines}
                     setMyRoutines={setMyRoutines}
                     allRoutines={allRoutines}
+                    setAllRoutines={setAllRoutines}
                     />
                 }
             />
@@ -133,6 +135,18 @@ const [allActivities, setAllActivities] = useState([]);
                     />
                 }
             />
+            <Route
+                path="/activities/new"
+                element={
+                    <CreateActivity 
+                        token={token}
+                        allActivities={allActivities}
+                        setAllActivities={setAllActivities}
+                    />
+                }
+            />
+
+            
             <Route
                 path="/routines/:id/edit"
                 element= {

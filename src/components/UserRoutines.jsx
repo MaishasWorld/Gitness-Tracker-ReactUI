@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import {getUserRoutines, removeRoutine} from '../api/indexAPI';
 import {CreateRoutine } from '.';
 
-const UserRoutines = ({user, myRoutines, setMyRoutines}) => {
+const UserRoutines = ({user, myRoutines, setMyRoutines, setAllRoutines, allRoutines}) => {
 const navigate = useNavigate();
 
 useEffect(() => {
@@ -18,7 +18,12 @@ useEffect(() => {
 
 return (
     <>
-    <CreateRoutine />
+    <CreateRoutine 
+     myRoutines={myRoutines}
+     setMyRoutines={setMyRoutines}
+     allRoutines={allRoutines}
+     setAllRoutines={setAllRoutines}
+    />
     {localStorage.token ?
       <>
         {myRoutines.map((routine) => {

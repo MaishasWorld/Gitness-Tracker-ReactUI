@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { getAllActivities } from "../api/indexAPI";
+import { CreateActivity } from ".";
 
 const AllActivities = ({
   allActivities,
   isLoggedIn,
   token,
   setAllActivities,
-}) => {
+  }) => {
   useEffect(() => {
     const getAllPublicActivities = async () => {
       const allActivities = await getAllActivities();
@@ -19,6 +20,10 @@ const AllActivities = ({
 
   return (
     <>
+    <CreateActivity
+    allActivities={allActivities}
+    setAllActivities={setAllActivities}
+    />
       {isLoggedIn || localStorage.token ? (
         <>
           <h2>All Activities</h2>
