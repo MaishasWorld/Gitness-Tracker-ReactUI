@@ -3,14 +3,14 @@ import { NavLink } from 'react-router-dom';
 import {getAllRoutines } from '../api/indexAPI';
 const AllRoutines = ({allRoutines, setAllRoutines}) => {
 
-    useEffect(() => {
-        const getAllPublicRoutines = async () => {
-        const allRoutines = await getAllRoutines();
-        // console.log(allRoutines);
-        setAllRoutines(allRoutines)
-        };
-        getAllPublicRoutines();
-    },[])
+    // useEffect(() => {
+    //     const getAllPublicRoutines = async () => {
+    //     const allRoutines = await getAllRoutines();
+    //     // console.log(allRoutines);
+    //     setAllRoutines(allRoutines)
+    //     };
+    //     getAllPublicRoutines();
+    // },[])
 
     return (
         <>
