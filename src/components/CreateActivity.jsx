@@ -12,7 +12,7 @@ const CreateActivity = ({token, allActivities, setAllActivities }) => {
         const newActivity = await createActivity(name, description);
             console.log(newActivity)
         if(!newActivity.error && newActivity !== undefined) {
-            setAllActivities([newActivity, ...allActivities]);
+            setAllActivities([...allActivities, newActivity]);
         } else {
             alert('Activity Already Exists!')
         }

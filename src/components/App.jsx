@@ -14,7 +14,7 @@ import {
     CreateActivity
 } from ".";
 import { Routes, Route } from "react-router-dom";
-//import { getAllRoutines } from "../api/indexAPI";
+import { getAllRoutines, getAllActivities } from "../api/indexAPI";
 
 const App = () => {
 const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -25,14 +25,23 @@ const [myRoutines, setMyRoutines] = useState([]);
 const [allActivities, setAllActivities] = useState([]);
 
 
-//What is this called?
-// useEffect(() => {
-//     const getAllPublicRoutines = async () => {
-//       const routines = await getAllRoutines();
-//       setAllRoutines(routines);
-//     };
-//     getAllPublicRoutines();
-// }, []);
+
+useEffect(() => {
+    const getAllPublicRoutines = async () => {
+      const routines = await getAllRoutines();
+      setAllRoutines(routines);
+    };
+    getAllPublicRoutines();
+}, []);
+
+useEffect(() => {
+    const getAllPublicActivities = async () => {
+      const allActivities = await getAllActivities();
+      console.log(allActivities);
+      setAllActivities(allActivities);
+    };
+    getAllPublicActivities();
+  }, []);
 
  return (
     <>
@@ -119,6 +128,8 @@ const [allActivities, setAllActivities] = useState([]);
                 element={
                     <UserRoutine
                         myRoutines={myRoutines}
+                        allActivities={allActivities}
+                        setAllActivities={setAllActivities}
                     />
                 }
             />

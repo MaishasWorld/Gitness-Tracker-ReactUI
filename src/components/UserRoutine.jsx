@@ -1,12 +1,22 @@
 import React, { useState } from 'react';
-import { useParams, NavLink } from 'react-router-dom';
-import { removeRoutineActivity } from '../api/indexAPI';
+import { useParams, NavLink, } from 'react-router-dom';
+import { removeRoutineActivity, addActivityToRoutine } from '../api/indexAPI';
 
-const UserRoutine = ({ myRoutines}) => {
+const UserRoutine = ({ myRoutines, allActivities, setAllActivities}) => {
     const id = Number(useParams().id);
     const routine = myRoutines.find(routine => routine.id === id);
-    const [userRoutine, setUserRoutine] = useState({});
-      
+    const [activityId, setActivityId] = useState(0);
+    const [count, setCount] = useState('');
+    const [duration, setDuration] = useState('');
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+            const data = await addActivityToRoutine(routine, activityId, count, duration); 
+        setCount('');
+        setDuration('');
+
+    }
+
     if(routine) {
     return (
         <>
@@ -22,26 +32,31 @@ const UserRoutine = ({ myRoutines}) => {
                             <li>Time: {activity.duration}</li>
                             <li>Reps: {activity.count}</li>
                         </ul>
-                        <button>Edit Activity</button>
                         <button onClick={ async () => {
-                            const routineActivityToRemove = await removeRoutineActivity(activity);
-                            // if(!routineActivityToRemove.error) 
-                                                       
-                            // {
-                            //     const newRoutineActivities = await getRoutineActivities(user)
-                            //     setMyRoutines(newUserRoutines);
-                            // }
-                            navigate(`/myroutines/:id`);
-                            }}
-                        
-                        >Delete Activity</button>
+                            const routineActivityToDelete = await removeRoutineActivity(activity);
+                            if(!routineActivityToDelete.error) {
+                                const newActivities = allActivities.filter((activity) => activity.id !== routineActivityToDelete.id)
+                                setAllActivities(newActivities);
+                            };
+                            }}>Delete Activity</button>
                     </div>
                 )
             })}
-            <>Form</>
-            <button>Add Activity</button>
+            <form onSubmit={handleSubmit}>
+                <select onChange={ (event) => {setActivityId(event.target.value)}}>
+                    {allActivities.map(activity => {
+                        return <option key={activity.id} value={activity.id}>{activity.name}</option>
+                    })}
+                </select>
+                <input type="text" placeholder="count" value={count} onChange={(event) => setCount(event.target.value)}/>
+                <input type="text" placeholder="duration" value={duration} onChange={(event) => setDuration(event.target.value)}/>
+                <button type="submit">Add Activity</button>
+            </form>
+        
         </>
     )};
 };
 
 export default UserRoutine;
+
+

@@ -190,7 +190,9 @@ export const getAllActivities = async () => {
   export const removeRoutineActivity = async (activity) => {
     try {
       const token = localStorage.getItem("token")
+      console.log(activity);
       const response = await fetch(`${BASE_URL}/routine_activities/${activity.id}`, {
+        method: "DELETE",
         headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`
@@ -204,3 +206,25 @@ export const getAllActivities = async () => {
     }
   }
         
+ export const addActivityToRoutine = async (routine, activityId, count, duration) => {
+    try {
+      const token = localStorage.getItem("token")
+      const response = await fetch(`${BASE_URL}/routines/${routine.id}/activities`, {
+        method: "POST",
+        headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          activityId: activityId,
+          count: count,
+          duration: duration
+        })
+      });
+      const result = await response.json();
+      console.log(result);
+      return result
+    } catch (err) {
+      console.error(err);
+    }
+  }
