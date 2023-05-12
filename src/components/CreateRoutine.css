@@ -1,0 +1,10 @@
+#create-routine-button {
+    height: 40px;
+    width: 120px;
+    background-color: lavender; 
+    border: 2px solid lightslategray;
+    color: lightslategray;
+    font-size: 24 px;
+    margin: 7px; 
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    }

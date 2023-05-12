@@ -1,6 +1,7 @@
 import React, { useState} from "react";
 import { NavLink, useNavigate } from 'react-router-dom';
 import { createRoutine } from '../api/indexAPI';
+import './CreateRoutine.css'
 
 const CreateRoutine = ({token, setMyRoutines, myRoutines, setAllRoutines, allRoutines }) => {
     const [name, setName] = useState('');
@@ -41,7 +42,7 @@ const CreateRoutine = ({token, setMyRoutines, myRoutines, setAllRoutines, allRou
                   } else {
                     setIsPublic(false)}}}/> 
 
-                <button type='submit'>Create Routine</button>
+                <button id='create-routine-button' type='submit'>Create Routine</button>
         </form>
     );
 };

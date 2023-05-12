@@ -23,3 +23,9 @@ border: .2px solid lavender;
     padding-left: 30px;
     padding-right: 30px;
     }
+
+#startup {
+    color: lightslategray;
+    font-family: Georgia, Helvetica;
+    font-size: 30px;
+}

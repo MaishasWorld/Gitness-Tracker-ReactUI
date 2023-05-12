@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from 'react-router-dom';
 import { createActivity } from '../api/indexAPI';
+import './CreateActivity.css'
 
 const CreateActivity = ({token, allActivities, setAllActivities }) => {
     const [name, setName] = useState('');
@@ -35,7 +36,7 @@ const CreateActivity = ({token, allActivities, setAllActivities }) => {
                   onChange={(event) => setDescription(event.target.value)}>
                 </input>
 
-                <button type='submit'>Create Activity</button>
+                <button id='create-activity-button' type='submit'>Create Activity</button>
         </form>
     );
 };
