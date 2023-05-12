@@ -1,19 +1,19 @@
 #header {
     display: flex;
-    width: 400px;
+    width: 500px;
     height: 160px;
     justify-content: space-between; 
     text-align: center;
     background-color: lavender; 
     color: white;
-    padding-left: 100px;
-    padding-right: 100px;
+    padding-left: 80px;
+    padding-right: 80px;
     align-items: center;
     box-shadow: 4px, 4px, 10px lightslategray;
     font-family: Georgia, Helvetica;
     letter-spacing: 5px;
-    font-size: 20px; 
-    border: whitesmoke;
+    font-size: 50px; 
+    
     
 }
 #navbar {
@@ -52,3 +52,13 @@ nav a:hover {
 }
 
 
+#logout-button{
+    height: 40px;
+    width: 120px;
+    background-color: lavender; 
+    border: 2px solid whitesmoke;
+    color: lightslategray;
+    font-size: 26px;
+    margin: 7px; 
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}

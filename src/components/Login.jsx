@@ -31,7 +31,7 @@ const Login = ({setIsLoggedIn, setToken, setUser, token }) => {
             <h2>Login</h2>
                 <input required type='text' placeholder='username' value={username} autoComplete='on' onChange={(event) => setUsername(event.target.value)}></input>
                 <input required type='text' placeholder='password' value={password} autoComplete='on' onChange={(event) => setPassword(event.target.value)}></input>
-                <button type='submit'>Login</button>
+                <button id='login-button' type='submit'>Login</button>
                 <p>Don't have an Account? <NavLink to="/register">Register Here</NavLink></p>
         </form>
         </>
